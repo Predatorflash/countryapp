@@ -7,11 +7,10 @@ class CountryList extends Component {
   }
 
   render() {
-    const renderr = this.props.requiredlist.map((value, i) => {
-      return <CountryCard key={i} />;
+    const renderr = this.props.filteredcountriesprop.map((value, i) => {
+      return <CountryCard key={i} name={value.name} countrycode={value.code} />;
     });
     return renderr;
-   // return <CountryCard />;
   }
 }
 

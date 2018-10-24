@@ -15,13 +15,14 @@ class App extends Component {
   searchprop = event => {
     console.log(this.state.searchstate);
     this.setState({ searchstate: event.target.value });
-    console.log(this.state.countrylist.countryjson);
-    console.log(this.filteredcountries);
+    console.log(this.state.countrylist);
   };
   render() {
     const filteredcountries = this.state.countrylist.countryjson.filter(
       countr => {
-        return countr.name.includes(this.state.searchstate);
+        return countr.name
+          .toLowerCase()
+          .includes(this.state.searchstate.toLowerCase());
       }
     );
 
@@ -36,7 +37,8 @@ class App extends Component {
         </div>
         <br />
         <div className="centrr">
-          <Countrylist requiredlist={filteredcountries} />
+          {console.log(filteredcountries)}
+          <Countrylist filteredcountriesprop={filteredcountries} />
         </div>
       </div>
     );

@@ -1,16 +1,19 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+
 class CountryCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   render() {
     return (
       <div>
         <div className="bg-light-blue dib br3 pa3 ma1 grow bw4 shadow-5">
-          <h1> country</h1>
-          <img src={logo} alt="img" />
+          <h1> {this.props.name}</h1>
+          <div className="tc">
+            <img
+              src={`https://www.countryflags.io/${
+                this.props.countrycode
+              }/shiny/64.png`}
+              alt="img"
+            />
+          </div>
         </div>
       </div>
     );
