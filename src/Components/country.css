@@ -1,6 +1,10 @@
 .centrr{
     display: flex;
     flex-wrap: wrap;
-   
+    word-wrap: break-word;
 
+}
+.endee{
+    display: flex;
+    justify-content: flex-end;
 }
