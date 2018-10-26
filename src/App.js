@@ -30,7 +30,11 @@ class App extends Component {
       }
     );
 
-    const homeroute = () => this.setState({ clickstate: null });
+    const homeroute = () =>
+      this.setState({
+        clickstate: null,
+        searchstate: ""
+      });
 
     return (
       <div>
