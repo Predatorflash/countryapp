@@ -10,19 +10,18 @@ class ClickCard extends Component {
       cardstate: ""
     };
   }
+  mycode = () => {
+    const countrycodecalc = countryjson.filter(value => {
+      return value.name
+        .toLowerCase()
+        .includes(this.props.countryname.toLowerCase());
+    });
+    console.log("i  am in mycode", countryjson, "asdas", countrycodecalc[0]);
+    return countrycodecalc[0].code;
+  };
   componentDidMount = () => {
-    let a = 10,
-      b = 15;
-    const mycode = () => {
-      const countrycodecalc = countryjson.filter(value => {
-        if (value.name === this.props.countryname) return true;
-      });
-      console.log("i  am in mycode", countryjson, countrycodecalc);
-      return countrycodecalc[0].code;
-    };
-
     axios
-      .get(`http://restcountries.eu/rest/v2/alpha/${mycode()}`)
+      .get(`http://restcountries.eu/rest/v2/alpha/${this.mycode()}`)
       .then(res => {
         console.log("I am inside axios", res);
         this.setState({

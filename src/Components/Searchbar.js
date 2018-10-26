@@ -7,7 +7,9 @@ class Searchbar extends Component {
           type="search"
           className="form-control"
           onChange={this.props.searchfield}
+          placeholder="Search here"
         />
+        <br />
       </div>
     );
   }

@@ -16,14 +16,10 @@ class App extends Component {
     };
   }
   searchprop = event => {
-    console.log(this.state.searchstate);
     this.setState({ searchstate: event.target.value });
-    console.log(this.state.countrylist);
   };
   clickable = event => {
-    console.log(event.target.id);
     this.setState({ clickstate: event.target.id });
-    console.log(this.state.clickstate);
   };
   render() {
     const filteredcountries = this.state.countrylist.countryjson.filter(
@@ -50,7 +46,6 @@ class App extends Component {
               <Searchbar searchfield={this.searchprop} />
 
               <div className="centrr">
-                {console.log(filteredcountries)}
                 <Countrylist
                   filteredcountriesprop={filteredcountries}
                   clickable={this.clickable}
