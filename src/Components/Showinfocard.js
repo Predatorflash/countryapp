@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 class ShowinfoCard extends Component {
   render() {
+    const getasyn = () => {
+      console.log(this.props.detail);
+      if (this.props.detail.currencies)
+        return this.props.detail.currencies[0].name;
+
+      return null;
+    };
     return (
-      <div>
-        <div className="tc">
-          <h1>CountryCode :{this.props.detail.alpha2Code} </h1>
-          <h1>Capital :{this.props.detail.capital} </h1>
-          <h1>Population :{this.props.detail.population} </h1>
-          <h1>Region :{this.props.detail.region} </h1>
-          <h1>Currency :{console.log(this.props.detail.currencies)} </h1>
+      <div className="madd ">
+        <div className="bg-light-blue pa3 shadow-5 grow br4">
           <div className="tc">
             <div className="madd">
               <h1>Flag : </h1>
@@ -22,6 +24,12 @@ class ShowinfoCard extends Component {
             </div>
           </div>
           <h1>CountryCode :{this.props.detail.alpha2Code} </h1>
+          <h1>Capital :{this.props.detail.capital} </h1>
+          <h1>Population :{this.props.detail.population} </h1>
+          <h1>Region :{this.props.detail.region} </h1>
+          <h1>Currency :{getasyn()} </h1>
+
+          <h1>TimeZone :{this.props.detail.timezones} </h1>
         </div>
       </div>
     );

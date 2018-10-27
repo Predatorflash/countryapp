@@ -7,41 +7,42 @@ class ClickCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardstate: ""
+      cardstate: "",
+      mount: false
     };
   }
-  mycode = () => {
-    let countrycodecalc = countryjson.filter(value => {
-      if (value.name.toLowerCase() === this.props.countryname.toLowerCase())
-        return true;
-    });
-    console.log(
-      "i  am in mycode",
-      countryjson,
-      "asdas",
-      this.props.countryname,
-      "asdasd00",
-      countrycodecalc[0]
-    );
 
-    return countrycodecalc[0].code;
-  };
   componentDidMount = () => {
+    this.setState({ mount: true });
+    console.log(this.state.mount);
+    const mycode = () => {
+      let countrycodecalc = null;
+      countrycodecalc = countryjson.filter(value => {
+        if (value.name.toLowerCase() === this.props.countryname.toLowerCase())
+          return true;
+        return false;
+      });
+      console.log("bfore", countrycodecalc);
+      if (countrycodecalc[0]) return countrycodecalc[0].code;
+      return null;
+    };
     axios
-      .get(`http://restcountries.eu/rest/v2/alpha/${this.mycode()}`)
+      .get(`http://restcountries.eu/rest/v2/alpha/${mycode()}`)
       .then(res => {
-        console.log("I am inside axios", res.data);
-        this.setState({
-          cardstate: res.data
-        });
+        if (this.state.mount)
+          this.setState({
+            cardstate: res.data
+          });
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log("i am failed", err));
   };
-
+  componentWillUnmount = () => {
+    this.setState({ mount: false });
+  };
   render() {
     return (
-      <div>
-        <h1>{this.props.countryname} :</h1>
+      <div onClick={this.props.backtohomeclick}>
+        <h1 className="display-4">{this.props.countryname} :</h1>
         {this.state.cardstate != null ? (
           <Showinfocard detail={this.state.cardstate} />
         ) : null}

@@ -21,6 +21,16 @@ class App extends Component {
   clickable = event => {
     this.setState({ clickstate: event.target.id });
   };
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    console.log("indide error", error);
+    return { clickstate: null };
+  }
+
+  componentDidCatch(error, info) {
+    // You can also log the error to an error reporting service
+    console.log("inside cdc", error, info);
+  }
   render() {
     const filteredcountries = this.state.countrylist.countryjson.filter(
       countr => {
@@ -38,6 +48,8 @@ class App extends Component {
 
     return (
       <div>
+        {" "}
+        {console.log("in render", this.state.clickstate)}
         <header>
           <h1 className="display-4 bold" onClick={homeroute}>
             Search Countries{" "}
@@ -61,7 +73,10 @@ class App extends Component {
               <div className="endee pa2">
                 <Backtohome backtohomeclick={homeroute} />
               </div>
-              <ClickCard countryname={this.state.clickstate} />
+              <ClickCard
+                countryname={this.state.clickstate}
+                backtohomeclick={homeroute}
+              />
             </div>
           )}
         </div>
