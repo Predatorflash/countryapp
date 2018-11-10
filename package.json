@@ -4,9 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
+    "react-scripts": "2.1.1",
+    "tachyons": "^4.11.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,5 +23,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "this app will have country card and will filter tha countries based on search . Also on clicking card the country info will be shown,",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Predatorflash/countryapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Predatorflash/countryapp/issues"
+  },
+  "homepage": "https://github.com/Predatorflash/countryapp#readme"
 }
