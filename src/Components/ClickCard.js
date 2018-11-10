@@ -27,7 +27,7 @@ class ClickCard extends Component {
       return null;
     };
     axios
-      .get(`http://restcountries.eu/rest/v2/alpha/${mycode()}`)
+      .get(`https://restcountries.eu/rest/v2/alpha/${mycode()}`)
       .then(res => {
         if (this.state.mount)
           this.setState({
